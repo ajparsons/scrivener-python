@@ -9,7 +9,6 @@ import os
 import xml.etree.ElementTree
 from pyth.plugins.rtf15.reader import Rtf15Reader
 from pyth.plugins.plaintext.writer import PlaintextWriter
-from docutils.parsers.rst.directives import path
 
 class MetaData(object):
     """
