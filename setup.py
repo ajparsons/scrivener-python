@@ -1,7 +1,7 @@
 from distutils.core import setup
 setup(
   name = 'scrivener-python',
-  packages = ['scrivener-python',
+  packages = ['scrivener_python',
               ],
   version = '0.1',
   description = 'Library to interact with ',
