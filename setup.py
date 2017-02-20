@@ -10,4 +10,8 @@ setup(
   url = 'https://github.com/ajparsons/scrivener-python', 
   keywords = [], 
   classifiers = [],
+  install_requires=[
+    'pyth',
+  ]
+
 )

@@ -9,6 +9,7 @@ import os
 import xml.etree.ElementTree
 from pyth.plugins.rtf15.reader import Rtf15Reader
 from pyth.plugins.plaintext.writer import PlaintextWriter
+from docutils.parsers.rst.directives import path
 
 class MetaData(object):
     """
@@ -61,9 +62,16 @@ class BinderItem(object):
         returns the file path of this snippet
         """
         if hasattr(self.metadata,"FileExtension"):
-            filename = "{0}.{1}".format(self.ID,self.metadata.FileExtension)
-            file_path = self._binder.folder
-            return os.path.join(file_path,"files","docs",filename)
+            ext = self.metadata.FileExtension
+        else:
+            ext = "rtf"
+            
+        filename = "{0}.{1}".format(self.ID,ext)
+        file_path = self._binder.folder
+        path = os.path.join(file_path,"files","docs",filename)
+        
+        if os.path.isfile(path):
+            return path
         else:
             return None
     
