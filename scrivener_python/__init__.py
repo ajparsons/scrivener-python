@@ -139,7 +139,16 @@ class Scrivener(object):
         return [x.text for x in collection.findall("Completion")]
             
     def add_autocomplete(self,new):
-        collection = self.root.findall('AutoCompleteList')[0]
+        collection = self.root.findall('AutoCompleteList')
+        if len(collection) == 0:
+            """
+            this document has no autocomplete
+            """
+            element = xml.etree.ElementTree.Element("AutoCompleteList")
+            self.root.insert(len(element)-1,element)
+            collection = self.root.findall('AutoCompleteList')
+            
+        collection = collection[0]
         element = xml.etree.ElementTree.Element("Completion",Scope="0")
         element.text = new
         collection.append(element)
