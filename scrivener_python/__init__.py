@@ -125,7 +125,7 @@ class Scrivener(object):
     """
     def __init__(self,folder):
         
-        if os.path.splitext(folder) == "scrivx":
+        if os.path.splitext(folder)[1] == ".scrivx":
             self.project_file = folder
             self.project = os.path.split(os.path.abspath(folder))[0]
         else:
