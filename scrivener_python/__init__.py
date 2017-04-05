@@ -133,7 +133,7 @@ class Scrivener(object):
             self.project_file = os.path.join(self.folder,"project.scrivx")
         self.project_tree = xml.etree.ElementTree.parse(self.project_file)
         self.root = self.project_tree.getroot()
-        self.binder = Binder(folder,self.root.findall('Binder')[0])
+        self.binder = Binder(self.folder,self.root.findall('Binder')[0])
         
     def get(self,*args,**kwargs):
         return self.binder.get(*args,**kwargs)
