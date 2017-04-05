@@ -127,7 +127,7 @@ class Scrivener(object):
         
         if os.path.splitext(folder)[1] == ".scrivx":
             self.project_file = folder
-            self.project = os.path.split(os.path.abspath(folder))[0]
+            self.folder = os.path.split(os.path.abspath(folder))[0]
         else:
             self.folder = folder
             self.project_file = os.path.join(self.folder,"project.scrivx")
