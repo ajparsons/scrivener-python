@@ -124,8 +124,13 @@ class Scrivener(object):
     interfaces with scrivener folder
     """
     def __init__(self,folder):
-        self.folder = folder
-        self.project_file = os.path.join(self.folder,"project.scrivx")
+        
+        if os.path.splitext(folder) == "scrivx":
+            self.project_file = folder
+            self.project = os.path.split(os.path.abspath(folder))[0]
+        else:
+            self.folder = folder
+            self.project_file = os.path.join(self.folder,"project.scrivx")
         self.project_tree = xml.etree.ElementTree.parse(self.project_file)
         self.root = self.project_tree.getroot()
         self.binder = Binder(folder,self.root.findall('Binder')[0])
